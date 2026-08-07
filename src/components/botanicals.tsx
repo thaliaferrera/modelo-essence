@@ -23,7 +23,7 @@ export function EucalyptusBranch(props: SVGProps<SVGSVGElement>) {
         [78, 84, 16, 19, 12],
         [56, 60, -58, 17, 11],
         [58, 36, 12, 15, 9],
-      ].map(([x, y, r, rx, ry], i) => (
+      ].map(([x = 0, y = 0, r = 0, rx = 0, ry = 0], i) => (
         <g key={i}>
           <ellipse
             cx={x}
