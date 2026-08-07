@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { LeafMark } from "@/components/botanicals";
+import { LeafMark, OliveBranch } from "@/components/botanicals";
 
 const links = [
   ["Sobre", "#sobre"],
+  ["Como funciona", "#como-funciona"],
   ["Abordagens", "#abordagens"],
-  ["Para quem", "#para-quem"],
+  ["Benefícios", "#beneficios"],
   ["Dúvidas", "#faq"],
 ];
 
@@ -13,7 +14,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 28);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -21,17 +22,17 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-[900ms] ${
-        scrolled ? "bg-background/85 py-4 backdrop-blur-md" : "bg-transparent py-7"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-[1200ms] ${
+        scrolled ? "bg-background/80 py-4 backdrop-blur-xl" : "bg-transparent py-8"
       }`}
     >
-      <div className="mx-auto flex max-w-[84rem] items-center justify-between px-6 md:px-10">
-        <a href="#top" className="flex items-center gap-3">
-          <LeafMark className="h-5 w-5 text-olive" />
-          <span className="font-display text-2xl tracking-[0.18em] uppercase">Essence</span>
+      <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 md:px-12">
+        <a href="#inicio" className="flex items-center gap-3">
+          <LeafMark className="sway h-5 w-5 text-olive" />
+          <span className="font-display text-[1.6rem] tracking-[0.24em] uppercase">Essence</span>
         </a>
 
-        <nav className="hidden items-center gap-10 text-xs tracking-[0.18em] uppercase md:flex">
+        <nav className="hidden items-center gap-9 text-[0.68rem] tracking-[0.22em] uppercase lg:flex">
           {links.map(([label, href]) => (
             <a key={href} href={href} className="link-quiet text-muted-foreground hover:text-foreground">
               {label}
@@ -39,7 +40,7 @@ export function SiteHeader() {
           ))}
           <a
             href="#contato"
-            className="rounded-full border border-foreground/25 px-6 py-3 transition-all duration-700 hover:bg-foreground hover:text-background"
+            className="rounded-full border border-forest/25 px-7 py-3 transition-all duration-1000 hover:bg-primary hover:text-primary-foreground"
           >
             Agendar
           </a>
@@ -50,23 +51,23 @@ export function SiteHeader() {
           aria-label="Abrir menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
         >
           <span
-            className={`h-px w-6 bg-foreground transition-transform duration-500 ${open ? "translate-y-[3px] rotate-45" : ""}`}
+            className={`h-px w-6 bg-foreground transition-transform duration-700 ${open ? "translate-y-[3px] rotate-45" : ""}`}
           />
           <span
-            className={`h-px w-6 bg-foreground transition-transform duration-500 ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
+            className={`h-px w-6 bg-foreground transition-transform duration-700 ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
           />
         </button>
       </div>
 
       <div
-        className="grid overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden"
+        className="grid overflow-hidden transition-all duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden"
         style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">
-          <nav className="mx-6 mt-4 flex flex-col gap-5 rounded-3xl bg-card/95 px-7 py-8 text-sm tracking-[0.16em] uppercase backdrop-blur-md">
+          <nav className="mx-6 mt-5 flex flex-col gap-5 rounded-[2rem] bg-card/95 px-8 py-9 text-sm tracking-[0.18em] uppercase backdrop-blur-xl">
             {[...links, ["Agendar", "#contato"] as const].map(([label, href]) => (
               <a key={href} href={href} onClick={() => setOpen(false)} className="text-muted-foreground">
                 {label}
@@ -81,38 +82,41 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="paper relative overflow-hidden bg-primary py-20 text-primary-foreground">
-      <div className="mx-auto max-w-[76rem] px-6 md:px-10">
-        <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+    <footer className="paper relative overflow-hidden bg-primary py-24 text-primary-foreground">
+      <OliveBranch className="sway-slow pointer-events-none absolute -right-16 top-6 h-28 w-80 text-primary-foreground/25" />
+
+      <div className="relative z-10 mx-auto max-w-[80rem] px-6 md:px-12">
+        <div className="flex flex-col gap-14 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="flex items-center gap-3">
               <LeafMark className="h-5 w-5 opacity-70" />
-              <span className="font-display text-3xl tracking-[0.18em] uppercase">Essence</span>
+              <span className="font-display text-[1.9rem] tracking-[0.24em] uppercase">Essence</span>
             </div>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-75">
-              Clínica de psicologia dedicada a um cuidado sereno, ético e profundamente humano.
+            <p className="mt-6 max-w-sm text-sm leading-[1.9] opacity-75">
+              Coleção premium de psicologia por Lumina. Um cuidado sereno, ético e profundamente
+              humano.
             </p>
           </div>
 
-          <div className="grid gap-8 text-sm sm:grid-cols-2">
+          <div className="grid gap-10 text-sm sm:grid-cols-2">
             <div className="space-y-3 opacity-80">
-              <p className="text-[0.65rem] tracking-[0.3em] uppercase opacity-70">Navegue</p>
+              <p className="text-[0.62rem] tracking-[0.32em] uppercase opacity-70">Navegue</p>
               {links.map(([label, href]) => (
-                <a key={href} href={href} className="block link-quiet w-fit">
+                <a key={href} href={href} className="link-quiet block w-fit">
                   {label}
                 </a>
               ))}
             </div>
             <div className="space-y-3 opacity-80">
-              <p className="text-[0.65rem] tracking-[0.3em] uppercase opacity-70">Fale conosco</p>
-              <a href="mailto:contato@essence.psi.br" className="block link-quiet w-fit">
+              <p className="text-[0.62rem] tracking-[0.32em] uppercase opacity-70">Fale conosco</p>
+              <a href="mailto:contato@essence.psi.br" className="link-quiet block w-fit">
                 contato@essence.psi.br
               </a>
               <a
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noreferrer"
-                className="block link-quiet w-fit"
+                className="link-quiet block w-fit"
               >
                 WhatsApp
               </a>
@@ -122,7 +126,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-16 flex flex-col gap-3 border-t border-primary-foreground/20 pt-8 text-xs opacity-65 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Essence Psicologia · CRP 06/000000</p>
+          <p>© {new Date().getFullYear()} Essence · Lumina · CRP 06/000000</p>
           <p>Feito com calma e cuidado.</p>
         </div>
       </div>

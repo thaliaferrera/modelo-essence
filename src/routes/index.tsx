@@ -1,19 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/hero";
 import {
-  About,
   Abordagens,
   Beneficios,
+  ComoFunciona,
   Contato,
   Depoimentos,
   Faq,
-  ParaQuem,
+  Sobre,
 } from "@/components/sections";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 
-const title = "Essence · Clínica de Psicologia em São Paulo";
+const title = "Essence · Psicoterapia com calma em São Paulo e online";
 const description =
-  "Um espaço seguro para cuidar da sua saúde emocional. Atendimento psicológico presencial e online, com empatia, respeito e escuta.";
+  "Um espaço seguro para respirar, sentir e recomeçar. Psicoterapia acolhedora, presencial em São Paulo e online para todo o Brasil.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,13 +31,13 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div id="top" className="min-h-screen bg-background">
+    <div className="min-h-screen overflow-x-hidden bg-background">
       <SiteHeader />
       <main>
         <Hero />
-        <About />
+        <Sobre />
+        <ComoFunciona />
         <Abordagens />
-        <ParaQuem />
         <Beneficios />
         <Depoimentos />
         <Faq />

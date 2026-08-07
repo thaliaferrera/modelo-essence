@@ -5,8 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Essence — Organic Minimalism design system.
- * Palette: warm white, soft sage, light olive, sand beige, dark charcoal.
+ * ESSENCE — Premium Psychology Collection by Lumina.
+ * Warm white · soft sage · natural linen · soft olive · muted forest.
+ * Typography: Fraunces (organic editorial serif) + Mulish (soft humanist sans).
  */
 
 @theme inline {
@@ -16,7 +17,7 @@
   --radius-xl: calc(var(--radius) + 8px);
   --radius-2xl: calc(var(--radius) + 20px);
   --radius-3xl: calc(var(--radius) + 40px);
-  --radius-4xl: calc(var(--radius) + 80px);
+  --radius-4xl: calc(var(--radius) + 90px);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -39,52 +40,54 @@
   --color-ring: var(--ring);
 
   --color-sage: var(--sage);
+  --color-linen: var(--linen);
   --color-olive: var(--olive);
-  --color-sand: var(--sand);
-  --color-ink: var(--ink);
+  --color-forest: var(--forest);
+  --color-gold: var(--gold);
 
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Mulish", ui-sans-serif, system-ui, sans-serif;
 
-  --shadow-soft: 0 24px 60px -32px oklch(0.31 0.02 120 / 0.28);
-  --shadow-lift: 0 34px 80px -34px oklch(0.31 0.02 120 / 0.34);
+  --shadow-breath: 0 30px 80px -46px oklch(0.42 0.03 148 / 0.4);
+  --shadow-lift: 0 44px 110px -50px oklch(0.42 0.03 148 / 0.48);
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 1.25rem;
 
-  /* #FAF8F5 */
+  /* #FAF8F5 warm white */
   --background: oklch(0.979 0.005 85);
-  /* #2E2E2E */
-  --foreground: oklch(0.312 0 0);
-  --card: oklch(0.991 0.003 85);
-  --card-foreground: oklch(0.312 0 0);
-  --popover: oklch(0.991 0.003 85);
-  --popover-foreground: oklch(0.312 0 0);
-
-  /* deep olive-charcoal for primary actions */
-  --primary: oklch(0.372 0.026 135);
-  --primary-foreground: oklch(0.979 0.005 85);
-
-  /* #DDE8DF */
+  /* #3A423C deep natural ink */
+  --foreground: oklch(0.34 0.012 155);
+  /* #F3EEE5 natural linen */
+  --linen: oklch(0.951 0.014 85);
+  /* #DDE8DF soft sage */
   --sage: oklch(0.921 0.017 155);
-  /* #C9D8C5 */
-  --olive: oklch(0.86 0.031 140);
-  /* #EEE8DD */
-  --sand: oklch(0.936 0.015 84);
-  --ink: oklch(0.312 0 0);
+  /* #BFCFB9 soft olive */
+  --olive: oklch(0.828 0.033 138);
+  /* #556B5D muted forest */
+  --forest: oklch(0.469 0.031 155);
+  /* whisper of gold */
+  --gold: oklch(0.78 0.062 84);
 
-  --secondary: var(--sand);
-  --secondary-foreground: oklch(0.312 0 0);
+  --card: oklch(0.991 0.004 85);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.991 0.004 85);
+  --popover-foreground: var(--foreground);
+
+  --primary: var(--forest);
+  --primary-foreground: oklch(0.979 0.005 85);
+  --secondary: var(--linen);
+  --secondary-foreground: var(--foreground);
   --muted: var(--sage);
-  --muted-foreground: oklch(0.505 0.012 130);
+  --muted-foreground: oklch(0.545 0.021 152);
   --accent: var(--olive);
-  --accent-foreground: oklch(0.312 0 0);
+  --accent-foreground: var(--foreground);
   --destructive: oklch(0.55 0.15 27);
   --destructive-foreground: oklch(0.979 0.005 85);
-  --border: oklch(0.892 0.012 110);
-  --input: oklch(0.892 0.012 110);
-  --ring: oklch(0.72 0.03 140);
+  --border: oklch(0.902 0.012 120);
+  --input: oklch(0.902 0.012 120);
+  --ring: var(--olive);
 }
 
 @layer base {
@@ -101,7 +104,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 300;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.005em;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -111,26 +114,28 @@
   h4 {
     font-family: var(--font-display);
     font-weight: 300;
-    letter-spacing: -0.015em;
+    font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 108;
+    letter-spacing: -0.02em;
   }
 
   ::selection {
     background: var(--olive);
-    color: var(--ink);
+    color: var(--foreground);
   }
 }
 
-/* --- Paper texture ------------------------------------------------- */
+/* --- Handmade paper texture ---------------------------------------- */
 @utility paper {
   position: relative;
   &::before {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.55;
     mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
   }
 }
 
@@ -139,26 +144,38 @@
   font-family: var(--font-sans);
   font-size: 0.6875rem;
   font-weight: 400;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--muted-foreground);
 }
 
-@utility organic-blob {
-  border-radius: 62% 38% 46% 54% / 48% 42% 58% 52%;
+@utility blob-a {
+  border-radius: 64% 36% 42% 58% / 52% 44% 56% 48%;
 }
 
-@utility arch {
-  border-radius: 999px 999px 2rem 2rem;
+@utility blob-b {
+  border-radius: 38% 62% 58% 42% / 46% 58% 42% 54%;
+}
+
+@utility petal {
+  border-radius: 62% 62% 62% 8%;
+}
+
+@utility arch-soft {
+  border-radius: 14rem 14rem 3rem 3rem;
+}
+
+@utility arch-inverse {
+  border-radius: 3rem 14rem 14rem 14rem;
 }
 
 /* --- Motion ---------------------------------------------------------- */
 @utility reveal {
   opacity: 0;
-  transform: translateY(26px);
+  transform: translateY(30px);
   transition:
-    opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 1.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
   &[data-visible="true"] {
     opacity: 1;
     transform: none;
@@ -167,18 +184,19 @@
 
 @utility link-quiet {
   position: relative;
-  transition: color 0.5s ease;
+  transition: color 0.7s ease;
   &::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -0.25rem;
+    bottom: -0.3rem;
     height: 1px;
     width: 100%;
     background: currentColor;
+    opacity: 0.6;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   &:hover::after {
     transform: scaleX(1);
@@ -186,34 +204,53 @@
   }
 }
 
-@keyframes drift {
+@keyframes breeze {
   0%,
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translate3d(0, -14px, 0) rotate(2.2deg);
+    transform: translate3d(4px, -9px, 0) rotate(1.2deg);
   }
 }
 
-@keyframes drift-slow {
+@keyframes breeze-reverse {
   0%,
   100% {
     transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translate3d(8px, -20px, 0) rotate(-2.6deg);
+    transform: translate3d(-6px, -6px, 0) rotate(-1.4deg);
   }
 }
 
-@utility float-leaf {
-  animation: drift 13s ease-in-out infinite;
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.75;
+  }
+}
+
+@utility sway {
+  animation: breeze 17s ease-in-out infinite;
+  transform-origin: bottom center;
   will-change: transform;
 }
 
-@utility float-leaf-slow {
-  animation: drift-slow 19s ease-in-out infinite;
+@utility sway-slow {
+  animation: breeze-reverse 26s ease-in-out infinite;
+  transform-origin: bottom center;
   will-change: transform;
+}
+
+@utility breathing {
+  animation: breathe 14s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
